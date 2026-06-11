@@ -4,14 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
 group = 'kr.ygh'
-description = 'Larryta'
 
 java {
     toolchain {
@@ -40,4 +33,19 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.named("jar") {
+    enabled = false
+}
+
+tasks.register('deploy', Exec) {
+    group = 'git'
+    commandLine 'sh', '-c', '''
+        git checkout main &&
+        git pull &&
+        git merge dev &&
+        git push &&
+        git checkout dev
+    '''
 }

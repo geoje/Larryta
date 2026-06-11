@@ -1,0 +1,13 @@
+spring:
+  jpa.open-in-view: false
+  
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/larryta
+    username: root
+    password: root
+
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate.ddl-auto: update

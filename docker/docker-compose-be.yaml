@@ -1,0 +1,27 @@
+networks:
+  default:
+    external: true
+    name: traefik
+
+services:
+  be:
+    image: larryta-be
+    build:
+      context: ../..
+    deploy:
+      update_config:
+        order: start-first
+        failure_action: rollback
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      JASYPT_PASSWORD: ${JASYPT_PASSWORD:?error}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD:?error}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+    labels:
+      traefik.enable: "true"
+      traefik.http.services.larryta-be.loadbalancer.server.port: 8080
+      traefik.http.routers.larryta-be.rule: Host(`larryta.ygh.kr`) && PathPrefix(`/api`)
+      traefik.http.routers.larryta-be.entrypoints: websecure
+      traefik.http.routers.larryta-be.tls: "true"
+      traefik.http.routers.larryta-be.tls.certresolver: letsencrypt

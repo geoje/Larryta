@@ -11,3 +11,5 @@ spring:
     show-sql: true
     generate-ddl: true
     hibernate.ddl-auto: update
+
+jasypt.encryptor.password: ${JASYPT_PASSWORD}

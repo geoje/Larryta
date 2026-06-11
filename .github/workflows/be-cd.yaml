@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: build/libs/larryta.jar, Dockerfile, docker
+          source: build/libs, Dockerfile, docker
           target: ~/${{ github.event.repository.name }}
 
       - name: Setup environment variables

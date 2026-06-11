@@ -1,9 +1,10 @@
 spring:
   jpa.open-in-view: false
+  web.resources.add-mappings: false
   
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3308/larryta
+    url: jdbc:mysql://localhost:3309/larryta
     username: root
     password: root
 
@@ -13,3 +14,6 @@ spring:
     hibernate.ddl-auto: update
 
 jasypt.encryptor.password: ${JASYPT_PASSWORD}
+
+logging:.level:
+  org.springframework.web.servlet.PageNotFound: ERROR

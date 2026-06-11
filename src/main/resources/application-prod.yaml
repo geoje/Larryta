@@ -2,6 +2,6 @@ spring:
   datasource:
     url: jdbc:mysql://larryta-db-1/larryta
     username: root
-    password: root
+    password: ENC(4HJ8LzqrDjYnTSxuig+jw8HwhO5xiWzCcDSY6eNU6g3jEUL3+XxWnkSMFeXK8xhS)
 
   jpa.show-sql: false

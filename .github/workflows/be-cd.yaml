@@ -47,8 +47,8 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             cd ~/${{ github.event.repository.name }}/docker
-            echo "JASYPT_PASSWORD=${{ secrets.JASYPT_PASSWORD }}" >> .env
-            echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" > .env
+            echo "JASYPT_PASSWORD=${{ secrets.JASYPT_PASSWORD }}" > .env
+            echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> .env
 
       - name: Update db
         uses: appleboy/ssh-action@v1.2.5
@@ -67,6 +67,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
           script: |
             cd ~/${{ github.event.repository.name }}/docker
             export $(cat .env)
